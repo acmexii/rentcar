@@ -27,10 +27,10 @@ public class AbstractEvent {
         this.setEventType(this.getClass().getSimpleName());
         this.timestamp = System.currentTimeMillis();
     }
-
+  
     public void publish() {
         /**
-         * spring streams 방식
+         * spring streams 방식   
          */
         KafkaProcessor processor = PointApplication.applicationContext.getBean(
             KafkaProcessor.class
