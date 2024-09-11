@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import rentcar.PointApplication;
+import rentcar.domain.NotAvailabled;
 import rentcar.domain.PointIncreased;
 
 @Entity
@@ -22,6 +23,9 @@ public class Point {
     public void onPostPersist() {
         PointIncreased pointIncreased = new PointIncreased(this);
         pointIncreased.publishAfterCommit();
+
+        NotAvailabled notAvailabled = new NotAvailabled(this);
+        notAvailabled.publishAfterCommit();
     }
 
     public static PointRepository repository() {
@@ -41,6 +45,8 @@ public class Point {
 
         PointIncreased pointIncreased = new PointIncreased(point);
         pointIncreased.publishAfterCommit();
+        NotAvailabled notAvailabled = new NotAvailabled(point);
+        notAvailabled.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -52,6 +58,8 @@ public class Point {
 
             PointIncreased pointIncreased = new PointIncreased(point);
             pointIncreased.publishAfterCommit();
+            NotAvailabled notAvailabled = new NotAvailabled(point);
+            notAvailabled.publishAfterCommit();
 
          });
         */
